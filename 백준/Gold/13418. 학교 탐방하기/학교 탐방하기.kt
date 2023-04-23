@@ -4,7 +4,6 @@ import java.io.StreamTokenizer
 
 private lateinit var parent: IntArray
 private val edgeList = ArrayList<Edge>()
-private lateinit var visited: BooleanArray
 
 private const val UP = 0
 private const val DOWN = 1
@@ -35,8 +34,6 @@ private fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
         } else {
             parent[rootB] = rootA
         }
-        visited[a] = true
-        visited[b] = true
     }
 
     val n = input()
@@ -52,7 +49,6 @@ private fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
     defaultParent[1] = 0
 
     parent = defaultParent.clone()
-    visited = BooleanArray(n + 1)
     makeUnion(start, end)
 
     repeat(m) {
@@ -63,11 +59,8 @@ private fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
     }
     edgeList.sortWith(compareBy { it.type })
 
-    var visited = BooleanArray(n + 1)
-
     var cnt = defaultCnt
     for (edge in edgeList) {
-        if (visited.all { it }) break
         val (s, e, t) = edge
         if (isUnion(s, e).not()) {
             makeUnion(s, e)
@@ -80,10 +73,8 @@ private fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
 
     parent = defaultParent.clone()
     edgeList.reverse()
-    visited = BooleanArray(n + 1)
     cnt = defaultCnt
     for (edge in edgeList) {
-        if (visited.all { it }) break
         val (s, e, t) = edge
         if (isUnion(s, e).not()) {
             makeUnion(s, e)
