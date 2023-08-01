@@ -105,9 +105,6 @@ public class Main {
 		if (!(numHash.containsKey(binaryNum))) {
 			queue.add(new Board(cnt + 1, board));
 			numHash.put(binaryNum, cnt + 1);
-		} else if (numHash.get(binaryNum) > cnt + 1) {
-			queue.add(new Board(cnt + 1, board));
-			numHash.put(binaryNum, cnt + 1);
 		}
 	}
 
