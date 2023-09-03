@@ -5,6 +5,7 @@ class Solution {
     HashSet<Character>[] idxCharSet;
     HashSet<String> visited = new HashSet<>();
     int answer = Integer.MAX_VALUE;
+    
     public int solution(String begin, String target, String[] words) {
         for(String word : words){
             wordSet.add(word);
