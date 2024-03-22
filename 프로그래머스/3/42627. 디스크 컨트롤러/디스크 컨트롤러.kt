@@ -4,8 +4,8 @@ class Solution {
     fun solution(jobs: Array<IntArray>): Int {
         var answer = 0
         
-        val workQueue = PriorityQueue<Job>(){a, b -> a.cost - b.cost}
-        val inQueue = PriorityQueue<Job>(){a, b -> a.start - b.start}
+        val workQueue = PriorityQueue<Job>(){a, b -> compareValuesBy(a, b, {it.cost})}
+        val inQueue = PriorityQueue<Job>(){a, b -> compareValuesBy(a, b, {it.start})}
         
         jobs.forEach{
             inQueue.add(Job(it[0],it[1]))
